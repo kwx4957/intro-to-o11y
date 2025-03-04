@@ -2,7 +2,7 @@
 
 
 ## Introduction
-otel 또는 grafana에 올라온 demo 프로젝트를 활용하여 o11y 도구들을 다뤄봄으로써 추상적으로 느껴지는 Observability를 구체적으로 경험하고자 하는 프로젝트입니다.
+grafana에 올라온 demo 프로젝트를 활용하여 o11y 도구들을 다뤄봄으로써 추상적으로 느껴지는 Observability를 구체적으로 경험하고자 하는 프로젝트입니다.
 
 ## Who need this study?
 - Observability가 무엇인지 궁금하신 분들
@@ -10,7 +10,6 @@ otel 또는 grafana에 올라온 demo 프로젝트를 활용하여 o11y 도구�
 - 프로젝트를 진행하면서 운영에 대해서 고민해보고 싶으신 분들
 
 ## 프로젝트 자료
-- https://github.com/open-telemetry/opentelemetry-demo
 - https://github.com/grafana/intro-to-mltp
   
 ## Member
@@ -25,7 +24,7 @@ otel 또는 grafana에 올라온 demo 프로젝트를 활용하여 o11y 도구�
 이창민</b></sub></a><br /></td>
     <td align="center"><a href="https://github.com/brynnPark"><img src="https://avatars.githubusercontent.com/u/91020050?v=4" alt=""/><br /><sub><b>
 박보현</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/kwx4957"><img src="https://avatars.githubusercontent.com/u/84828274?v=4"alt=""/><br /><sub><b>
+    <td align="center"><a href="https://github.com/Hamburg-Whale"><img src="https://avatars.githubusercontent.com/u/87288460?v=4" alt=""/><br /><sub><b>
 조승빈</b></sub></a><br /></td>
   </tr>
 </table>
