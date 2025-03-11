@@ -36,12 +36,12 @@ Grafana Alloy is a configuration of the Grafana Agent, designed to handle metric
 ## Description
 [Steps for labs]
 - **Start docker compose provided by Grafana Git**
-![docker compose up](<Screenshot 2025-03-11 at 4.10.57 PM.png>)
+![docker compose up](<image/Screenshot 2025-03-11 at 4.10.57 PM.png>)
 - **Explore local grafna monitoring tools with services such as mimir, pyroscope, loki, etc.**
-![grafana_mimir](<Screenshot 2025-03-11 at 4.13.35 PM.png>)
-![grafana_pyroscope](<Screenshot 2025-03-11 at 4.28.19 PM.png>)
+![grafana_mimir](<image/Screenshot 2025-03-11 at 4.13.35 PM.png>)
+![grafana_pyroscope](<image/Screenshot 2025-03-11 at 4.28.19 PM.png>)
 - **Stopped docker compose**
-![stopping docker](<Screenshot 2025-03-11 at 4.32.31 PM.png>)
+![stopping docker](<image/Screenshot 2025-03-11 at 4.32.31 PM.png>)
 
 ## Refloctions
 Although I successfully set up the observability stack and explored what Grafana provides, I still find myself grappling with the depth of "observability" as a concept. The labs showed how tools like Grafana facilitate observability but understanding the underlying mechanisms of how these tools capture, process, and visualize data will require deeper exploration. The interaction with the tools provided a good starting point, but the technical intricacies of how these tools interconnect and function still need clearer elucidation.
