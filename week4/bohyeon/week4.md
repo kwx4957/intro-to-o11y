@@ -1,5 +1,6 @@
 
 
+
 # 1. Observability Market Landscape
 
 ![landscape](images/image-1.png)
@@ -7,7 +8,7 @@
 참고: 그래프 속 기업은 초기 집중 영역별로 분류되어 있으며, 현재는 많은 기업이 초기 분야 뿐만 아니라 여러 분야에 걸쳐 통합 서비스를 제공하고 있다.
 
 <br/>
-Observability 실습을 하고 실제 모니터링이 어떻게 이루어지는지 알아보고자 하는데, 그 전에 카테고리에 따라 어떻게 툴이 있는지 간단하게 살펴보고자 한다. 
+Observability 실습을 하고 실제 모니터링이 어떻게 이루어지는지 알아보고자 하는데, 그 전에 카테고리에 따라 어떻게 툴이 있는지 간단하게 살펴보고자 한다. Observability 안에서도 AI용도, CI/CD용도, Network 용도 등의 다양한 목적별 툴이 존재한다. 그 중 가장 유명한 툴 몇 개를 간단하게 보겠다. 
 
 ### 🔹 Metrics
 - **Prometheus**: 시계열(time-series) 데이터를 수집하고 저장하는 오픈소스 모니터링 시스템. Kubernetes 환경에서 가장 널리 사용되며, PromQL이라는 쿼리 언어로 유연한 질의가 가능하다.
@@ -62,16 +63,19 @@ Observability 실습을 하고 실제 모니터링이 어떻게 이루어지는�
 
 <br/>
 
-# 2. Observability Usecase (실제 기업 사례)
+# 2. Observability Usecase (기업 사례)
+큰 기업들이 어떻게 모니터링을 구성하고 있는지 확인하보려고 했으나, 스택만 간신히 찾을 수 있고 큰 정보가 없어서 각 기업이 사용하는 툴을 비롯한 간단한 내용들만 적었다.
+
 ### 🔸 Netflix
 ![netflix-excel](images/image-2.png)
 ( 넷플릭스 구조 관련해서 찾아보다 발견한 글 -- 유머 한 스푼 두고 갑니다 .. ㅎㅎ)
 <br/>
 <br/>
 
-넷플릭스는 자체적인 플랫폼을 많이 사용해 초기에 공부하기에 적합하다고 생각하지 않았다. 따라서 간단하게만 정리하고 넘어간다.
+넷플릭스는 자체적인 플랫폼을 많이 사용한다. 따라서 구체적인 구현은 보지 않고, 어떤 기능이 툴을 개발했는지와 그 이유를 간단하게만 정리하고 넘어간다
 - 수백 개의 마이크로서비스를 운영
 - 자체 Observability 플랫폼을 사용해 메트릭, 로그, 트레이스를 통합 관리
+    - Mantis: 실시간 스트리밍 데이터를 처리하고 분석할 수 있는 스트캐링 기반 플랫폼
     - Atlas: 시계열 데이터 수집 및 시각화 도구 (Metrics)
     - Vector: 로그 수집 파이프라인
     - Edda: 클라우드 리소스 상태 추적
@@ -80,22 +84,33 @@ Observability 실습을 하고 실제 모니터링이 어떻게 이루어지는�
     - Spinnaker: CI/CD 파이프라인 통합
 - 장애 복원력(Resilience)을 높이기 위해 Observability에 큰 투자를 함
 
+넷플릭스가 운영하는 기술 블로그에 따르면 넷플릭스는 사업의 규모가 커짐에 따라 방대한 인스턴스 수를 처리하는 것뿐만 아니라 대규모 마이크로서비스 기반 아키텍처를 위한 신속하고 실행 가능한 인사이트를 제공하는 것이 중요해졌다. 특히, 마이크로서비스 아키텍처로 전환하고 트패픽이 방대해짐에 따라 기존의 툴로는 기업의 니즈르 만족할 수 없어 새로운 툴을 개발한 것으로 보인다. 
+서비스의 규모가 어느 정도 이상으로 커지면 영구 저장소에 로그를 계속 저장하는 것에 한계가 발생한다. 따라서 선택적으로 로그를 저장하거나 스트리밍(real-time stream)을 통해 메모리에 일시적으로 저장한 뒤, 필요에 따른 전처리를 한 뒤 원하느 로그만 영구 저장소에 저장하는 방법을 사용한다. 이러한 기능을 제공하는 서비스 중 하나가 Mantis이며 Netflix가 자체 개발했다. <br/>
+
+
 ### 🔸 Pinterest
-넷플릭스는 자체적인 플랫폼을 사용하는 반면, 핀터레스트의 경우에는 오픈 소스를 많이 사용하고 있고 클라우드 네이티브 환경에서 Observability를 구축했기 때문에 공부하기에 훨씬 좋다고 판단했다.
 
 - 핀터레스트의 observability 구성은 아래와 같다 :
-    - Prometheus + Thanos: 메트릭 수집 및 장기 저장
-    - Grafana: 시각화 및 대시보드
-    - ELK Stack (Elasticsearch, Logstash, Kibana): 로그 분석
-    - Jaeger: 분산 트레이싱
-    - OpenTelemetry: 통합 수집기
+    - Honeycomb: 2021년부터 도입한 서비스로, 복잡한 서비스의 실시간 고급 데이터 시각화 지원을 통해 모니터링이 가능하게 함
+    - Stasboard: 시각화 및 대시보드
+    - Logsearch: 디버그 로그 분석
+    - Pintrace: 분산 트레이싱 시스템으로 마이크로서비스 환경에서 요청 흐름을 추적하고 성능 튜닝 및 근본 원인 분석에 활용
+    - TScript: 시계열 데이터를 분석하기 위해 자체 개발한 언어로 복잡한 메트릭 연산을 쉽게 표현해 빠르게 처리할 수 있음
 - 장애 발생 시, 트레이스 기반 분석으로 병목 구간 신속 파악가능
 
+<br/>
 
+> 적지만 기업 사례들을 보면서 느낀 점은 데이터가 방대하게 쏟아지는 만큼, 현재 기업들이 집중하고 있는 것은 **"어떻게 쏟아지는 데이터를 빠르게 처리하고, 불필요한 데이터(로그)를 걸러내어 저장 비용을 적게 사용할 것인가"** 인 거 같다. 
 
-### 🔸 쿠팡
-- 실시간 알림 시스템과 로그 분석 도구를 통해 배송 상태 트래킹, 에러 대응 자동화
+<br/>
 
+# 3. Observability Labs
+
+Observability를 구성하는 카테고리 별 간단한 실습이라도 해보고 싶어 구글링하다가 발견한 실습 사이트이다. <br/>
+> https://observability.courselabs.co/
+
+<br/>
+차근차근 실습하면서 내용 추가 업데이트 할 예정이다.
 
 <br/>
 
@@ -103,5 +118,10 @@ Observability 실습을 하고 실제 모니터링이 어떻게 이루어지는�
 출처
 - https://casber.substack.com/p/observability-in-2024
 - https://netflixtechblog.com/tagged/observability
-- 
+- https://netflixtechblog.com/a-microscope-on-microservices-923b906103f4
+- https://netflixtechblog.com/lessons-from-building-observability-tools-at-netflix-7cfafed6ab17
+- https://www.baeldung.com/java-netflix-mantis
+- https://medium.com/pinterest-engineering/analyzing-time-series-for-pinterest-observability-95f8cc0c5885
+- https://www.usenix.org/sites/default/files/conference/protected-files/srecon19emea_slides_abbas.pdf
+
 
