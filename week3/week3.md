@@ -33,7 +33,7 @@ Metric은 Observability에서 중요한 역할을 하는 속성으로, 일정 �
 <br/>
 
 ## Logging vs. Monitoring
-![logging vs. monitoring](images/image.png)
+![logging vs. monitoring](images/image-1.png)
 
 ### Logging:
 
